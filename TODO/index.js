@@ -1,4 +1,4 @@
-var toDoList = {};
+var toDoList = [];
 var i = 1;
 var list = document.createElement("ol");
 list.id = "list";
@@ -10,16 +10,15 @@ function submit(){
 
     let input = document.getElementById("additem").value;
     toDoList[i] = input;
-    createElement(input);
+    createElement();
     i++;
     console.log(toDoList);
     
-
 }
 
 function clearList(){
 
-    toDoList = {};
+    toDoList = [];
     
     let getList = document.getElementById("list");
     getList.parentNode.removeChild(getList);
@@ -33,30 +32,29 @@ function clearList(){
     
 }
 
-function done(id){
+function done(id,input){
 
-    id = "1";
     let first = document.getElementById(id);
+    
+    const index = toDoList.indexOf(input);
+
+    if (index > -1) {
+        toDoList.splice(index, 1);
+    }
     first.parentNode.removeChild(first);
+    createElement();
     console.log("done");
 }
 
-function createElement(input){
+function createElement(){
 
-    let li = document.createElement("li");
-    let donebtn = document.createElement("button");
-    let string =  input + ".        ";
-
-    li.innerHTML = string;
-    li.id = i.toString();
-
-    donebtn.innerHTML = "Done";
-    donebtn.id = i.toString();
+    var li = "";
+    toDoList.forEach((element,index) => {
+        li += `<li id=${index}>${element}<button id=${index} onclick=done('${index}','${element}')>Done</button></li>`;
+    });
     
+    list.innerHTML = li;
 
-    li.appendChild(donebtn);
-    list.appendChild(li);
-    donebtn.onclick = done;
     
     
 }
