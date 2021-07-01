@@ -1,6 +1,9 @@
 var toDoList = {};
 var i = 1;
-//document.addEventListener('DOMContentLoaded', createButton(),false);
+var list = document.createElement("ol");
+list.id = "list";
+document.body.appendChild(list);
+
 
 
 function submit(){
@@ -18,56 +21,44 @@ function clearList(){
 
     toDoList = {};
     
-    for(let j = 1;j<=i-1;j++){
-        let getDiv = document.getElementById("div");
-        getDiv.parentNode.removeChild(getDiv);
-    }
+    let getList = document.getElementById("list");
+    getList.parentNode.removeChild(getList);
     
     console.log(toDoList);
     i = 1;
+    var list = document.createElement("ol");
+    list.id = "list";
+    document.body.appendChild(list);
     
     
 }
 
-function done(){
-    let getDiv = document.getElementById("div");
-    let done = document.createElement("p");
-    done.innerHTML = "Done";
-    getDiv.appendChild(done);
+function done(id){
+
+    id = "1";
+    let first = document.getElementById(id);
+    first.parentNode.removeChild(first);
     console.log("done");
 }
 
 function createElement(input){
 
-    let divElement = document.createElement("div");
-    let p = document.createElement("p");
-    //let xbtn = document.createElement("button");
+    let li = document.createElement("li");
     let donebtn = document.createElement("button");
-    let string =  i.toString() + ". " + input;
-    divElement.id = "div";
-    p.innerHTML = string;
-    p.id = "p";
-    //xbtn.innerHTML = "x";
-    //xbtn.id = "xbtn";
+    let string =  input + ".        ";
+
+    li.innerHTML = string;
+    li.id = i.toString();
+
     donebtn.innerHTML = "Done";
-    donebtn.id = "donebtn";
+    donebtn.id = i.toString();
     
-    divElement.appendChild(p);
-    //divElement.appendChild(xbtn);
-    divElement.appendChild(donebtn);
-    document.body.appendChild(divElement);
 
-    //xbtn.onclick = done();
-    //donebtn.onclick = done;
+    li.appendChild(donebtn);
+    list.appendChild(li);
+    donebtn.onclick = done;
     
     
 }
 
-function createButton(){
-    var xbtn = document.createElement("button");
-    xbtn.innerHTML = "x";
-    xbtn.id = "xbtn";
-    //xbtn.onclick = done();
-
-}
 
