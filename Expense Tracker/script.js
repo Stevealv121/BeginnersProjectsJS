@@ -3,6 +3,11 @@ var table = document.getElementById("table");
 var index = 1;
 var expensesData = [];
 var row = "";
+table.innerHTML = `<tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Amount</th>
+    </tr>`;
 
 function addExpense(){
     var name = document.getElementById("name").value;
@@ -20,7 +25,6 @@ function addExpense(){
 function deleteEx(id){
 
     const i = id*3;
-    console.log("i: "+i);
 
     if (i > -1) {
         expensesData.splice(i-2, 1);
@@ -28,13 +32,19 @@ function deleteEx(id){
         expensesData.splice(i-2, 1);
     }
     table.deleteRow(id);
+    index -= 3;
     showTable();
 
 }
 
 function showTable(){
     row = "";
-    console.log("row: "+row);
+    table.innerHTML = "";
+    table.innerHTML = `<tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Amount</th>
+    </tr>`;
     console.log(expensesData);
     let k = 1;
     for(let j = 1; j <= index-1; j++){
@@ -43,7 +53,6 @@ function showTable(){
                     <td>${expensesData[j]}<button id=${k}
                     onclick="deleteEx(this.id)">X</button></td></tr>`;
             k++;
-            console.log("amount: "+expensesData[j]);
         }
     }
 
