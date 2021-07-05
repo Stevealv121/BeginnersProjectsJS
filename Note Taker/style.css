@@ -1,0 +1,35 @@
+h1{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+    color: rgb(247, 85, 26);
+}
+
+#addNote{
+    color: white;
+    align-self: center;
+    background-color: rgb(247, 85, 26);
+}
+
+#writeNote{
+    width: 600px;
+}
+
+.note{
+    text-align: center;
+}
+
+.detail{
+    background-color: teal;
+    color: white;
+}
+
+.noteTable{
+    text-align: center;
+}
+
+table{
+    width: 100%;
+}
